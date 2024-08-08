@@ -15,6 +15,15 @@ func (p *Page) save() error {
 	return os.WriteFile(filename, p.Body, 0600)
 }
 
+func viewPage(title string) (*Page, error) {
+	filename := title + ".txt"
+	body, err := os.ReadFile(filename)
+	if err != nil {
+		return nil, err
+	}
+	return &Page{Title: title, Body: body}, nil
+}
+
 func main() {
 	fmt.Println("Welcome To Wiki")
 }
