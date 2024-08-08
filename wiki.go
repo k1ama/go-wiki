@@ -25,5 +25,9 @@ func viewPage(title string) (*Page, error) {
 }
 
 func main() {
-	fmt.Println("Welcome To Wiki")
+	p1 := &Page{Title: "TestPage", Body: []byte("This is a sample page.")}
+	p1.save()
+
+	p2, _ := viewPage("TestPage")
+	fmt.Println(string(p2.Body))
 }
